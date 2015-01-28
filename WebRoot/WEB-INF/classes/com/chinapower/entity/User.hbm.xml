@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.chinapower.entity.User" table="user_login">
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name ="user_id" type="java.lang.Integer" column="user_id" ></property>
+		<property name="user_name" type="string" column="user_name" length="50"></property>
+		<property name="user_pass" type="string" column="user_pass" length="50"></property>
+		<property name="user_auth" type="string" column="user_auth" length="50"></property>
+		<property name="user_dept" type="string" column="user_dept" length="50"></property>
+		<property name="user_email" type="string" column="user_email" length="50"></property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.chinapower.entity.CompanyInfo" table="company_info">
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name ="company_id" type="java.lang.Integer" column="company_id" length="20" ></property>
+		<property name="company_name" type="string" column="company_name" length="100"></property>
+	</class>
+</hibernate-mapping>

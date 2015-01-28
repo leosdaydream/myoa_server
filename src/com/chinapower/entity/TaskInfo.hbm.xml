@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.chinapower.entity.TaskInfo" table="task_info">
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name ="task_id" type="string" column="task_id" ></property>
+		<property name="task_title" type="string" column="task_title" length="50"></property>
+		<property name="task_content" type="string" column="task_content" length="50"></property>
+		<property name="task_start_time" type="string" column="task_start_time" length="50"></property>
+		<property name="task_end_time" type="string" column="task_end_time" length="50"></property>
+		<property name="task_create_time" type="string" column="task_create_time" length="50"></property>
+		<property name="task_type" type="string" column="task_type" length="50"></property>
+		<property name="task_tracker_ids" type="string" column="task_tracker_ids" length="200"></property>
+		<property name="task_execution_ids" type="string" column="task_execution_ids" length="200"></property>
+	</class>
+</hibernate-mapping>

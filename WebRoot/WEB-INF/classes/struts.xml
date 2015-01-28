@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.action.extension" value="action,jsp" />  
+	<package name="user" extends="struts-default">
+		<global-results>   
+		
+            <!-- 下面定义的结果对所有的Action都有效 -->   
+            <result name="exception">/error.jsp</result>   
+        </global-results>   
+        <global-exception-mappings>   
+            <!-- 指Action抛出Exception异常时，转入名为exception的结果。 -->   
+            <exception-mapping exception="java.lang.Exception"  result="exception" />   
+        </global-exception-mappings>   
+		<action name="sigin" class="com.chinapower.action.SiginAction" method="sigin">
+			<result name="success">/mybugs.jsp</result>
+			<result name="false">/login.html</result>
+		</action>
+		<action name="signout" class="com.chinapower.action.SiginAction" method="signout"></action>
+		<action name="getallpress" class="com.chinapower.action.PressAction" method="getAllPress"></action>
+		<action name="createPermission" class="com.chinapower.action.PermissionAction" method="createPermission"></action>
+		<action name="getPressById" class="com.chinapower.action.PressAction" method="getPressById"></action>
+		<action name="createUser" class="com.chinapower.action.UserAction" method="createUser"></action>
+		<action name="deleteUserByid" class="com.chinapower.action.UserAction" method="deleteUserByid"></action>
+		<action name="getUserById" class="com.chinapower.action.UserAction" method="getUserById"></action>
+		<action name="upload" class="com.chinapower.action.UploadAction" method="uploadfile">
+			<param name="savePath">/resources/files</param>
+			<result name="success">/test.html</result>
+		</action>
+		<action name ="FileUpload" class ="com.chinapower.action.FileAction" method="upload">
+			<param name="savePath">/resources/files</param>
+        </action >
+        <action name="getWether" class="com.chinapower.action.GetCityWether" method ="getWether"></action>
+        <action name="getAllMyTask" class="com.chinapower.action.TaskAction" method ="getAllMyTask"></action>
+	<!-- client request -->
+	<action name="clientrequest" class="com.chinapower.action.CServer" method="requestClientInfo"></action>
+	<!-- company -->
+	    <action name="saveCompanyInfo" class="com.chinapower.action.CompanyAction" method="saveCompanyInfo"></action>
+	</package>
+	
+</struts>

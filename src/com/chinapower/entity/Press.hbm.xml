@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.chinapower.entity.Press" table="press_info">
+		<id name="press_id" type="java.lang.Integer" column="press_id">
+			<generator class="increment"></generator>
+		</id>
+		<property name ="press_title" type="string" column="press_title" length="50" ></property>
+		<property name="press_content" type="string" column="press_content"></property>
+		<property name="press_create_time" type="string" column="press_create_time" length="50"></property>
+		<property name="press_auth" type="string" column="press_auth" length="50"></property>
+		<property name="press_image_path" type="string" column="press_image_path" length="100"></property>
+	</class>
+</hibernate-mapping>

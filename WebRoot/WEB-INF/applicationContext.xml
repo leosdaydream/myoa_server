@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/china_electric_power"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+		<property name="maxActive" value="100"></property>
+		<property name="maxIdle" value="30"></property>
+		<property name="maxWait" value="500"></property>
+		<property name="defaultAutoCommit" value="true"></property>
+	</bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/chinapower/entity/User.hbm.xml</value>
+				<value>com/chinapower/entity/Press.hbm.xml</value>
+				<value>com/chinapower/entity/LoginInfo.hbm.xml</value>
+				<value>com/chinapower/entity/Permission.hbm.xml</value>
+				<value>com/chinapower/entity/TaskInfo.hbm.xml</value>
+				<value>com/chinapower/entity/MyTaskInfo.hbm.xml</value>
+				<value>com/chinapower/entity/CompanyInfo.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 用户 -->
+	<bean id="userDao" class="com.chinapower.dao.impl.UserDaoImpl" scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="userService" class="com.chinapower.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+
+	<bean id="sigin" class="com.chinapower.action.SiginAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="createUser" class="com.chinapower.action.UserAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<!-- 新闻-->
+	<bean id="pressDao" class="com.chinapower.dao.impl.PressDaoImpl" scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="pressService" class="com.chinapower.service.impl.PressServiceImpl">
+		<property name="pressDao" ref="pressDao"></property>
+	</bean>
+
+	<bean id="getAllpress" class="com.chinapower.action.PressAction" scope="prototype">
+		<property name="pressService" ref="pressService"></property>
+	</bean>
+	<!-- 任务-->
+	<bean id="taskDao" class="com.chinapower.dao.impl.TaskDaoImpl" scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="taskService" class="com.chinapower.service.impl.TaskServiceImpl">
+		<property name="taskDao" ref="taskDao"></property>
+	</bean>
+
+	<bean id="getAllMytask" class="com.chinapower.action.TaskAction" scope="prototype">
+		<property name="taskService" ref="taskService"></property>
+	</bean>
+	
+	<!-- 公司-->
+	<bean id="companyDao" class="com.chinapower.dao.impl.CompanyDaoImpl" scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="companyService" class="com.chinapower.service.impl.CompanyServiceImpl">
+		<property name="companyDao" ref="companyDao"></property>
+	</bean>
+
+	<bean id="saveCompanyInfo" class="com.chinapower.action.CompanyAction" scope="prototype">
+		<property name="companyService" ref="companyService"></property>
+	</bean>
+	
+	
+	<!-- 权限-->
+	<bean id="permissionDao" class="com.chinapower.dao.impl.PermissionDaoImpl" scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="permissionService" class="com.chinapower.service.impl.PermissionServiceImpl">
+		<property name="permissionDao" ref="permissionDao"></property>
+	</bean>
+
+	<bean id="createPermission" class="com.chinapower.action.PremissionAction" scope="prototype">
+		<property name="permissionService" ref="permissionService"></property>
+	</bean>
+	
+</beans>

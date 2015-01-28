@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="chinapower"
+  id="myeclipse.1410398755831"
+  context-root="/chinapower"
+  j2ee-spec="5.0"
+  archive="chinapower.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

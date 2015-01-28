@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.chinapower.entity.MyTaskInfo" table="mytask_info">
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name ="user_id" type="string" column="user_id" length="20" ></property>
+		<property name="task_ids" type="string" column="task_ids" length="200"></property>
+		<property name="my_exection_task_ids" type="string" column="my_exection_task_ids" length="200"></property>
+		<property name="my_track_task_ids" type="string" column="my_track_task_ids" length="200"></property>
+		<property name="my_finish_task_ids" type="string" column="my_finish_task_ids" length="200"></property>
+		<property name="my_star_task_ids" type="string" column="my_star_task_ids" length="200"></property>
+		<property name="my_overdue_task_ids" type="string" column="my_overdue_task_ids" length="200"></property>
+		<property name="my_alreadydue_task_ids" type="string" column="my_alreadydue_task_ids" length="200"></property>
+	</class>
+</hibernate-mapping>

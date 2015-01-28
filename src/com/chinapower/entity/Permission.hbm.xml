@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.chinapower.entity.Permission" table="permission_info">
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name ="premission_id" type="java.lang.Integer" column="permission_id" length="50" ></property>
+		<property name="permission_name" type="string" column="permission_name"></property>
+		<property name="permission_desc" type="string" column="permission_description" length="50"></property>
+	</class>
+</hibernate-mapping>
